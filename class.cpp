@@ -7,6 +7,11 @@ class Student{
     int regno;
 
 public:
+    int getDetails(string n, int r, int reg){
+        name = n;
+        rollno = r;
+        regno = reg;
+    }
     int getDetailsuser(){
         cout << "Enter the Name: ";
         cin >> name;
