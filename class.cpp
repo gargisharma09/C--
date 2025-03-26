@@ -7,11 +7,13 @@ class Student{
     int regno;
 
 public:
+    // Getting details from Arguments
     int getDetails(string n, int r, int reg){
         name = n;
         rollno = r;
         regno = reg;
     }
+    // Getting details from User
     int getDetailsuser(){
         cout << "Enter the Name: ";
         cin >> name;
