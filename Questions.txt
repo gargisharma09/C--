@@ -1,0 +1,7 @@
+Q1, Difference between Procedural and object oriented programming?
+Q2. Difference between C and C++ ?
+Q3. What are Conditional Statements ? Explain all the conditional statements and differences between these statements ? - if-else, else if, nested if
+Q4. What are Iterative or looping statement ? - for, while and do while loops
+Q5. What are top down approach and bottom up approach ? Difference and explanation - in top down approach the execution begins from the top and in bottom up the execution starts from bottom
+Q6. Define break and continue ?
+Q7 What are classes and objects ?
