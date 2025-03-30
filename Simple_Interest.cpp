@@ -3,13 +3,13 @@ using namespace std;
  int main()
  {
     int principle,rate,time,SI;
-    cout<<"enter principle:";
+    cout<<"Principle:";
     cin>>principle;
-    cout<<"enter rate";
+    cout<<"Rate: ";
     cin>>rate;
-    cout<<"enter time";
+    cout<<"Time: ";
     cin>>time;
     SI=(principle*rate*time)/100;
-    cout<<"\n si is :" << SI; 
+    cout<<"\n SI is:" << SI; 
     return 0;
  }
