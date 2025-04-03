@@ -1,12 +1,14 @@
 #include <iostream>
 #include <vector>
 #include <string>
-#include <limits> // Added for numeric_limits
+#include <limits> 
 using namespace std;
 
 class Courier {
 private:
     static int totalCouriers; // Static data member to track total entries
+    static int trackingSequence[3]; // Possible tracking IDs
+    static int trackingIndex; // Index to rotate tracking IDs
     int trackingID;
     string sender;
     string receiver;
@@ -14,17 +16,18 @@ private:
     string status;
 
 public:
-    // Constructor
-    Courier(string s, string r, string loc, int id) {
-        trackingID = id;
+    
+    Courier(string s, string r, string loc) {
+        trackingID = trackingSequence[trackingIndex];
+        trackingIndex = (trackingIndex + 1) % 3; // Rotate tracking ID
         sender = s;
         receiver = r;
         location = loc;
-        if (id == 123)
+        if (trackingID == 123)
             status = "Dispatched";
-        else if (id == 456)
+        else if (trackingID == 456)
             status = "Received";
-        else if (id == 789)
+        else if (trackingID == 789)
             status = "Packing";
         else
             status = "Unknown";
@@ -33,7 +36,7 @@ public:
         displayDetails();
     }
 
-    // Function to display courier details
+   
     void displayDetails() const {
         cout << "\n----------------------------------" << endl;
         cout << "Tracking ID: " << trackingID << endl;
@@ -44,13 +47,15 @@ public:
         cout << "----------------------------------\n" << endl;
     }
 
-    // Getter functions
+    
     int getTrackingID() const { return trackingID; }
     string getReceiver() const { return receiver; }
 };
 
-// Static data member initialization
+
 int Courier::totalCouriers = 0;
+int Courier::trackingSequence[3] = {123, 456, 789};
+int Courier::trackingIndex = 0;
 
 // Function overloading to retrieve courier details
 void findCourier(const vector<Courier> &couriers, int id) {
@@ -86,31 +91,23 @@ int main() {
         
         cin >> choice;
         if (cin.fail()) {
-            cin.clear(); // Clear error flag
+            cin.clear();
             cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
             cout << "\nInvalid input! Please enter a number between 1 and 4.\n";
             continue;
         }
-        cin.ignore(); // Ignore leftover newline
+        cin.ignore(); 
 
         switch (choice) {
             case 1: {
                 string sender, receiver, location;
-                int id;
                 cout << "\nEnter Sender's Name: ";
                 getline(cin, sender);
                 cout << "Enter Receiver's Name: ";
                 getline(cin, receiver);
                 cout << "Enter Initial Location: ";
                 getline(cin, location);
-                cout << "Select Tracking ID (123, 456, 789): ";
-                cin >> id;
-                cin.ignore();
-                if (id != 123 && id != 456 && id != 789) {
-                    cout << "\nInvalid Tracking ID! Please use 123, 456, or 789.\n";
-                    break;
-                }
-                couriers.push_back(Courier(sender, receiver, location, id));
+                couriers.push_back(Courier(sender, receiver, location));
                 break;
             }
             case 2: {
@@ -118,8 +115,8 @@ int main() {
                 cout << "\nEnter Tracking ID: ";
                 cin >> id;
                 if (cin.fail()) {
-                    cin.clear(); // Clear error flag
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
+                    cin.clear(); 
+                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
                     cout << "\nInvalid input! Please enter a valid numeric Tracking ID.\n";
                     break;
                 }
