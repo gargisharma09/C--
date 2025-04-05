@@ -1,142 +1,143 @@
 #include <iostream>
 #include <vector>
-#include <string>
-#include <limits> 
 using namespace std;
 
 class Courier {
 private:
-    static int totalCouriers; // Static data member to track total entries
-    static int trackingSequence[3]; // Possible tracking IDs
-    static int trackingIndex; // Index to rotate tracking IDs
-    int trackingID;
-    string sender;
-    string receiver;
-    string location;
-    string status;
+    static int nextId;
+    int id;
+    string sender, receiver, status;
+    float weight, distance, fee;
 
 public:
-    
-    Courier(string s, string r, string loc) {
-        trackingID = trackingSequence[trackingIndex];
-        trackingIndex = (trackingIndex + 1) % 3; // Rotate tracking ID
+    Courier(string s, string r, float w, float d) {
+        id = nextId++;
         sender = s;
         receiver = r;
-        location = loc;
-        if (trackingID == 123)
-            status = "Dispatched";
-        else if (trackingID == 456)
-            status = "Received";
-        else if (trackingID == 789)
-            status = "Packing";
-        else
-            status = "Unknown";
-        
-        cout << "\nCourier added successfully!\n";
-        displayDetails();
+        weight = w;
+        distance = d;
+        fee = (weight * 10) + (distance * 5);
+        status = "In Transit";
     }
 
-   
-    void displayDetails() const {
-        cout << "\n----------------------------------" << endl;
-        cout << "Tracking ID: " << trackingID << endl;
-        cout << "Sender: " << sender << endl;
-        cout << "Receiver: " << receiver << endl;
-        cout << "Current Location: " << location << endl;
-        cout << "Status: " << status << endl;
-        cout << "----------------------------------\n" << endl;
+    int getId() { return id; }
+
+    void display() {
+        cout << "\n----------------------------------\n";
+        cout << "         Courier Details\n";
+        cout << "----------------------------------\n";
+        cout << "ID        : " << id << "\n";
+        cout << "Sender    : " << sender << "\n";
+        cout << "Receiver  : " << receiver << "\n";
+        cout << "Weight    : " << weight << " kg\n";
+        cout << "Distance  : " << distance << " km\n";
+        cout << "Fee       : $" << fee << "\n";
+        cout << "Status    : " << status << "\n";
+        cout << "----------------------------------\n";
     }
 
-    
-    int getTrackingID() const { return trackingID; }
-    string getReceiver() const { return receiver; }
+    void setStatus(string s) { status = s; }
 };
 
+int Courier::nextId = 1000;
 
-int Courier::totalCouriers = 0;
-int Courier::trackingSequence[3] = {123, 456, 789};
-int Courier::trackingIndex = 0;
+class CourierSystem {
+private:
+    vector<Courier> couriers;
 
-// Function overloading to retrieve courier details
-void findCourier(const vector<Courier> &couriers, int id) {
-    for (const auto &c : couriers) {
-        if (c.getTrackingID() == id) {
-            cout << "\nTracking ID: " << c.getTrackingID() << "\nStatus: Received\n";
+public:
+    void addCourier() {
+        string sender, receiver;
+        float weight, distance;
+
+        cin.ignore();
+        cout << "Enter Sender Name   : ";
+        getline(cin, sender);
+        cout << "Enter Receiver Name : ";
+        getline(cin, receiver);
+        cout << "Enter Weight (kg)   : ";
+        cin >> weight;
+        cout << "Enter Distance (km) : ";
+        cin >> distance;
+
+        Courier c(sender, receiver, weight, distance);
+        couriers.push_back(c);
+        cout << "\nCourier Added Successfully!\n";
+        c.display();
+    }
+
+    void trackCourier() {
+        int id;
+        cout << "Enter Courier ID to track: ";
+        cin >> id;
+
+        for (auto &c : couriers) {
+            if (c.getId() == id) {
+                c.display();
+                return;
+            }
+        }
+        cout << "Courier not found.\n";
+    }
+
+    void updateStatus() {
+        int id;
+        string status;
+        cout << "Enter Courier ID to update: ";
+        cin >> id;
+        cin.ignore();
+        cout << "Enter new status: ";
+        getline(cin, status);
+
+        for (auto &c : couriers) {
+            if (c.getId() == id) {
+                c.setStatus(status);
+                cout << "Status updated successfully!\n";
+                return;
+            }
+        }
+        cout << "Courier not found.\n";
+    }
+
+    void displayAll() {
+        if (couriers.empty()) {
+            cout << "No couriers available.\n";
             return;
         }
-    }
-    cout << "\nCourier not found. Please check the Tracking ID and try again.\n";
-}
-
-void findCourier(const vector<Courier> &couriers, string receiver) {
-    for (const auto &c : couriers) {
-        if (c.getReceiver() == receiver) {
-            cout << "\nReceiver: " << c.getReceiver() << "\nStatus: Received\n";
-            return;
+        for (auto &c : couriers) {
+            c.display();
         }
     }
-    cout << "\nCourier not found. Please check the Receiver's name and try again.\n";
-}
+
+    void menu() {
+        int choice;
+        do {
+            cout << "\n=====================================\n";
+            cout << "          COURIER SYSTEM MENU        \n";
+            cout << "=====================================\n";
+            cout << " 1. Add Courier\n";
+            cout << " 2. Track Courier\n";
+            cout << " 3. Update Courier Status\n";
+            cout << " 4. Display All Couriers\n";
+            cout << " 5. Exit\n";
+            cout << "=====================================\n";
+            cout << "Enter your choice: ";
+            cin >> choice;
+
+            switch (choice) {
+                case 1: addCourier(); break;
+                case 2: trackCourier(); break;
+                case 3: updateStatus(); break;
+                case 4: displayAll(); break;
+                case 5: cout << "Exiting Courier System. Goodbye!\n"; break;
+                default: cout << "Invalid choice. Please try again.\n";
+            }
+        } while (choice != 5);
+    }
+};
 
 int main() {
-    vector<Courier> couriers;
-    int choice;
-    do {
-        cout << "\n====== Courier Tracking System ======" << endl;
-        cout << "1. Add New Courier" << endl;
-        cout << "2. Search Courier by ID" << endl;
-        cout << "3. Search Courier by Receiver" << endl;
-        cout << "4. Exit" << endl;
-        cout << "Enter your choice: ";
-        
-        cin >> choice;
-        if (cin.fail()) {
-            cin.clear();
-            cin.ignore(numeric_limits<streamsize>::max(), '\n'); // Discard invalid input
-            cout << "\nInvalid input! Please enter a number between 1 and 4.\n";
-            continue;
-        }
-        cin.ignore(); 
-
-        switch (choice) {
-            case 1: {
-                string sender, receiver, location;
-                cout << "\nEnter Sender's Name: ";
-                getline(cin, sender);
-                cout << "Enter Receiver's Name: ";
-                getline(cin, receiver);
-                cout << "Enter Initial Location: ";
-                getline(cin, location);
-                couriers.push_back(Courier(sender, receiver, location));
-                break;
-            }
-            case 2: {
-                int id;
-                cout << "\nEnter Tracking ID: ";
-                cin >> id;
-                if (cin.fail()) {
-                    cin.clear(); 
-                    cin.ignore(numeric_limits<streamsize>::max(), '\n'); 
-                    cout << "\nInvalid input! Please enter a valid numeric Tracking ID.\n";
-                    break;
-                }
-                findCourier(couriers, id);
-                break;
-            }
-            case 3: {
-                string receiver;
-                cout << "\nEnter Receiver Name: ";
-                getline(cin, receiver);
-                findCourier(couriers, receiver);
-                break;
-            }
-            case 4:
-                cout << "\nExiting system. Thank you for using the Courier Tracking System!\n";
-                break;
-            default:
-                cout << "\nInvalid choice! Please enter a valid option.\n";
-        }
-    } while (choice != 4);
-
+    CourierSystem system;
+    system.menu();
     return 0;
 }
