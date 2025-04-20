@@ -198,6 +198,7 @@ int main()
 return 0;
 
 }*/
+/*
 #include <iostream>
 using namespace std;
 
@@ -323,5 +324,107 @@ int main() {
     Teacher t2(t1);
     t2.getInfo();
 
+    return 0;
+}*/
+
+// Shallow copy and Deep copy
+
+// A shallow copy of any object copies all of the member values from one object to another .
+// A deep copy, on the other hand not only copies the member values but also make the copies of anny  dynamically allocated memory that the members point to .
+#include <iostream>
+#include<string>
+using namespace std;
+
+class Student{
+public:
+   string name;
+   double cgpa;
+
+   Student(string name, double cgpa) {
+    this->name = name;
+    this->cgpa = cgpa;
+   }
+
+void getInfo() {
+    cout << "name :" << name << endl;
+    cout << "cgpa :" << cgpa << endl;
+}
+
+};
+int main() 
+{
+    Student s1("rahul kumar", 8.9);
+
+    Student s2(s1);
+    s2.getInfo();
+    
+    return 0;
+}
+#include <iostream>
+#include<string>
+using namespace std;
+
+class Student{
+public:
+   string name;
+   double cgpa;
+
+   Student(string name, double cgpa) {
+    this->name = name;
+    this->cgpa = cgpa;
+   }
+
+   Student(Student &obj) {
+    this->name = obj.name;
+    this->cgpa = obj.cgpa;
+   }
+void getInfo() {
+    cout << "name :" << name << endl;
+    cout << "cgpa :" << cgpa << endl;
+}
+
+};
+int main() 
+{
+    Student s1("rahul kumar", 8.9);
+
+    Student s2(s1);
+    s2.getInfo();
+    
+    return 0;
+}
+
+
+#include <iostream>
+#include <string>
+using namespace std;
+
+class Student{
+public:
+   string name;
+   double cgpa;
+
+   Student(string name, double cgpa) {
+    this->name = name;
+    this->cgpa = cgpa;
+   }
+
+   Student(Student &obj) {
+    this->name = obj.name;
+    this->cgpa = obj.cgpa;
+   }
+void getInfo() {
+    cout << "name :" << name << endl;
+    cout << "cgpa :" << cgpa << endl;
+}
+
+};
+int main() 
+{
+    Student s1("rahul kumar", 8.9);
+
+    Student s2(s1);
+    s2.getInfo();
+    
     return 0;
 }

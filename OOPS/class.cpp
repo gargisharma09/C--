@@ -69,39 +69,4 @@ int main(){
 // 2. public:data & methods accessible to everyone 
 // 3. protected : data &method accessile inside and to its derived class
 
-#include <iostream>
-using namespace std;
-class Teacher{
-    //properties/ attributes
-public:
-    string name;
-    string dept;
-    string subject;
-    double salary;
 
-    //methods
-    void changeDept(string newDept){
-        dept = newDept;
-    }
-    //setter
-    void setsalary(double s) {
-        salary = s;
-    }
-    //getter
-    double getsalary() {
-        return salary;
-    }
-};
-
-int main(){
-    Teacher t1;
-    t1.name = "gargi";
-    t1.subject = "C++";
-    t1.dept = "Computer Science";
-    t1.setsalary = 25000;
-
-    cout<<t1.salary << endl;
-    cout<<t1.getsalary << endl;
-    
-    return 0;
-}
