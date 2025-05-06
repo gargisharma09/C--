@@ -9,3 +9,20 @@ public:
         cout << "Total amount: Rs. " << total << endl;
     }
 };
+
+int main() {
+    PetrolPump pump;
+    int litres;
+
+    cout << "====== Petrol Pump Billing System ======" << endl;
+    cout << "Enter number of litres you want to purchase: ";
+    cin >> litres;
+
+    if (litres > 0) {
+        pump.calculateTotal(litres);
+    } else {
+        cout << "Invalid input. Litres must be greater than 0." << endl;
+    }
+
+    return 0;
+}
