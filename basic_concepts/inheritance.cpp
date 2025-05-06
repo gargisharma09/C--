@@ -1,5 +1,5 @@
 class Customer:
-   def set_name(self, name):
+def set_name(self, name):
         self.name = name
 
    
@@ -13,6 +13,7 @@ class OrderDetails:
         self.product = product
 
    
+        
     def show_order(self):
         print("Product Ordered:", self.product)
 
