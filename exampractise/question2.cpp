@@ -7,7 +7,7 @@ public:
     void calculateTotal(int litres) {
         float total = litres * price_per_litre;
         cout << "Total amount: Rs. " << total << endl;
-    }
+    }+
 };
 
 int main() {
