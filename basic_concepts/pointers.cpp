@@ -30,7 +30,7 @@ int main(){
 
     return 0;
 }*/
-/*Call by value */
+/*Call by value : when we pass value of variable as arguments 
 #include <iostream>
 using namespace std;   
 
@@ -46,4 +46,21 @@ int main(){
 void square(int n){
     n = n*n;
     cout << "Square: " << n << endl;
+}*/
+/*Call by reference : when we pass address of variable as arguments*/
+#include<iostream>
+using namespace std;   
+
+void square(int *n);
+
+int main(){
+    int  number= 4;
+    square(&number);
+    cout << "number: " << number << endl;       
+    return 0;
+}
+
+void square(int *n){
+    *n = (*n) * (*n);
+    cout << "Square: " << *n << endl;
 }
