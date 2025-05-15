@@ -64,6 +64,7 @@ void square(int *n){
     *n = (*n) * (*n);
     cout << "Square: " << *n << endl;
 }*/
+/*
 #include <iostream>
 using namespace std;    
 
@@ -81,4 +82,44 @@ int main() {
     cout << "x: " << x << endl;
     cout << "y: " << y << endl;
     return 0;   
+}*/
+
+/*#include<iostream> 
+using namespace std;  
+
+// Function prototype
+void swap(int *a, int *b);  
+
+int main() {
+    int x = 3, y = 5;
+    swap(&x, &y); // call by address (pointer)
+    cout << "x: " << x << endl;
+    cout << "y: " << y << endl;
+    return 0;   
 }
+
+void swap(int *a, int *b) {
+    int t = *a;
+    *a = *b;
+    *b = t;
+    cout << "a: " << *a << endl;
+    cout << "b: " << *b << endl;
+}*/
+
+#include <iostream>
+using namespace std;
+
+void printaddress(int n);
+
+int main() {
+    int n = 4;
+    cout << "Address of n: " << &n << endl;
+    
+    return 0;
+
+}
+
+void printaddress(int n) {
+    cout << "Address of n: " << &n << endl;
+}
+// ]'[;p.l"[p;0o98i7ujy6ht5gr4fed3w2sq1a    A   q`1q    aZ]]'
