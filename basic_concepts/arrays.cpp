@@ -19,7 +19,7 @@ int main(){
     
     return 0;
 }   */
-
+/*
 #include <iostream>
 using namespace std;        
 int main(){
@@ -28,5 +28,20 @@ int main(){
     for(int i = 0; i < 3; i++){
         cout << marks[i] << " ";
     }
+    return 0;
+}*/
+
+#include <iostream>
+using namespace std;
+
+int main(){
+    float prices[3] = {100, 200, 300};
+    cout << "Prices after 18% GST: ";
+    
+    for(int i = 0; i < 3; i++){
+        float final_price = prices[i] + (0.18 * prices[i]);
+        cout << final_price << " ";
+    }
+
     return 0;
 }
