@@ -47,7 +47,7 @@ void square(int n){
     n = n*n;
     cout << "Square: " << n << endl;
 }*/
-/*Call by reference : when we pass address of variable as arguments*/
+/*Call by reference : when we pass address of variable as arguments
 #include<iostream>
 using namespace std;   
 
@@ -63,4 +63,22 @@ int main(){
 void square(int *n){
     *n = (*n) * (*n);
     cout << "Square: " << *n << endl;
+}*/
+#include <iostream>
+using namespace std;    
+
+void swap(int a, int b) {
+    int t = a;
+    a = b;
+    b = t;
+    cout << "a: " << a << endl;
+    cout << "b: " << b << endl;
+}
+
+int main() {
+    int x = 3, y = 5;
+    swap(x, y); // call by value
+    cout << "x: " << x << endl;
+    cout << "y: " << y << endl;
+    return 0;   
 }
