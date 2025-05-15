@@ -9,7 +9,7 @@ int main(){
     cout<<"Pointer: "<<ptr<<endl;
     return 0;
 }*/
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 
 int main(){
@@ -29,4 +29,21 @@ int main(){
     cout << "*ptr: " << *ptr << endl;
 
     return 0;
+}*/
+/*Call by value */
+#include <iostream>
+using namespace std;   
+
+void square(int n);
+
+int main(){
+    int  number= 4;
+    square(number);
+    cout << "Number: " << number << endl;       
+    return 0;
+}
+
+void square(int n){
+    n = n*n;
+    cout << "Square: " << n << endl;
 }
