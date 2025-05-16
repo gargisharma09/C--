@@ -31,7 +31,7 @@ int main(){
     return 0;
 }*/
 
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 
 int main(){
@@ -44,4 +44,19 @@ int main(){
     }
 
     return 0;
+}*/
+//array operators
+#include <iostream>
+using namespace std;
+
+int main(){
+    int age= 22;
+    int *ptr= &age;
+    cout << "Age: " << age << endl;
+    cout << "Pointer to age: " << ptr << endl;
+    ptr++;
+    cout << "Pointer after increment: " << ptr << endl;
+    
+    return 0;
 }
+
