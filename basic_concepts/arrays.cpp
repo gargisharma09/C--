@@ -121,12 +121,110 @@ for(int i=0; i<n/2; i++){
     arr[i]=secondvalue;
     arr[n-i-1]= firstvalue;
 }*/
-
+/*
 #include <iostream> 
 using namespace std;
-int main(){
 
+void reverse(int arr[], int n){
+    int firstvalue, secondvalue;
+    for(int i=0; i<n/2; i++){
+        firstvalue= arr[i];
+        secondvalue= arr[n-i-1];//always use this while reversing
+        arr[i]=secondvalue;
+        arr[n-i-1]= firstvalue;
+    }
     return 0;
 }
 
+void printarray(int arr[], int n){
+    for(int i=0; i<n; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
 
+void reverse(int arr[], int n){
+    int firstvalue, secondvalue;
+    for(int i=0; i<n/2; i++){
+        firstvalue= arr[i];
+        secondvalue= arr[n-i-1];//always use this while reversing
+        arr[i]=secondvalue;
+        arr[n-i-1]= firstvalue;
+    }
+}
+
+int main(){
+    int arr[5]= {1,2,3,4,5};
+
+    return 0;
+}*/
+/*
+
+#include <iostream>
+using namespace std;
+
+void reverseArray(int arr[], int size) {
+    int start = 0;
+    int end = size - 1;
+
+    while (start < end) {
+        // Swapping elements at start and end
+        int temp = arr[start];
+        arr[start] = arr[end];
+        arr[end] = temp;
+
+        // Move pointers inward
+        start++;
+        end--;
+    }
+}
+
+int main() {
+    int n;
+
+    cout << "Enter the size of the array: ";
+    cin >> n;
+
+    int arr[n];
+
+    cout << "Enter " << n << " elements:\n";
+    for (int i = 0; i < n; i++) {
+        cin >> arr[i];
+    }
+
+    reverseArray(arr, n);
+
+    cout << "Reversed array:\n";
+    for (int i = 0; i < n; i++) {
+        cout << arr[i] << " ";
+    }
+
+    return 0;
+}
+*/
+// fibonaci series by array
+/*
+#include <iostream>
+using namespace std;
+
+int main(){
+    int n;
+    cout << "Enter the number of terms in the Fibonacci series: ";
+    cin >> n;
+    int fib[n];
+    fib[0] = 0;         
+
+    fib[1] = 1;
+    for(int i=2; i<n; i++){
+        fib[i] = fib[i-1] + fib[i-2];
+    }
+
+
+    cout << "Fibonacci series: ";
+    for(int i=0; i<n; i++){
+        cout << fib[i] << " ";
+    }
+    cout << endl;
+    return 0;
+
+}*/
