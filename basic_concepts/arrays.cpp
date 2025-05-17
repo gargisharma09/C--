@@ -46,7 +46,7 @@ int main(){
     return 0;
 }*/
 //array operators
-#include <iostream>
+/*#include <iostream>
 using namespace std;
 
 int main(){
@@ -59,4 +59,74 @@ int main(){
     
     return 0;
 }
+*/
+/*#include <iostream>
+using namespace std;
+
+int main(){
+    int marks[2][3];
+    marks[0][0]= 90;
+    marks[0][1]= 95;
+    marks[0][2]= 100;
+
+    marks[1][0]= 85;
+    marks[1][1]= 90;
+    marks[1][2]= 95;
+    
+    for(int i=0; i<3; i++){
+        cout << marks[0][i] << " ";
+    }
+    cout << endl;
+    for(int i=0; i<3; i++){
+        cout << marks[1][i] << " ";
+    }           
+    cout << endl;
+    cout << "Size of marks array: " << sizeof(marks) << endl;   
+
+    cout << "Size of marks[0] array: " << sizeof(marks[0]) << endl;
+    cout << "Size of marks[1] array: " << sizeof(marks[1]) << endl;     
+    
+    return 0;
+}
+*/
+/*
+#include <iostream>     
+using namespace std;
+
+int countodd(int arr[],int n );
+int main(){
+    int arr[]= {1,2,3,4,5,6};
+    cout << "Array elements: "<<arr[0]<<" "<<arr[1]<<" "<<arr[2]<<" "<<arr[3]<<" "<<arr[4]<<" "<<arr[5]<<endl;
+    cout<<countodd(arr,6)<<endl;
+    cout << "Size of arr: " << sizeof(arr) << endl;
+    return 0;
+
+}
+
+int countodd(int arr[],int n){
+    int count= 0;
+    for(int i=0; i<n; i++){
+        if(arr[i] %2!=0){//odd
+            count++;
+    }
+}
+
+return count;
+}*/
+
+/* simple array reversal concept
+for(int i=0; i<n/2; i++){
+    firstvalue= arr[i];
+    secondvalue= arr[n-i-1];//always use this while reversing
+    arr[i]=secondvalue;
+    arr[n-i-1]= firstvalue;
+}*/
+
+#include <iostream> 
+using namespace std;
+int main(){
+
+    return 0;
+}
+
 
