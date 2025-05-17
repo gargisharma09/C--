@@ -228,3 +228,22 @@ int main(){
     return 0;
 
 }*/
+#include <iostream>
+using namespace std;
+ 
+void  storetable(int arr[], int n, int m,int number);
+
+int main(){
+    int tables[2][10];
+    storetable(tables,0,10,2);
+    storetable(tables,1,10,3);
+    return 0;
+}
+
+void storetable(int arr[] [], int n, int m) {
+    for(int i= 0; i<n; i++) {
+        for(int j=0; j<m; j++) {
+            arr[n][m]= number * (i+1); 
+        }
+    }
+}
