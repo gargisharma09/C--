@@ -17,8 +17,16 @@ void printhello(){
 #include <iostream>
 using namespace std;
 
+void printhello(int n){
+    if(n==0){
+        return;
+    }
+    cout << "hello world" << endl;
+    printhello(n-1);
+}
+
 int main(){
-    
-    
+    printhello(5);//function call
+
     return 0;
 }
