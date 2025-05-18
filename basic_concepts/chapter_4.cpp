@@ -2,8 +2,15 @@
 using namespace std;
 
 int main(){
-    for(int i=10; i<= ; i= i+1){
-        printf("%d \n" , i)
+    int n= 4;
+    for(int i=1; i<=n; i++){
+
+        for(int j=1; j<=n; j++){
+            cout<<j;
+        }
+
+        cout<<endl;
     }
+    
     return 0;
 }
